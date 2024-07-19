@@ -28,8 +28,12 @@ services:
       MARIADB_DATABASE: exampledb
       MARIADB_USER: exampleuser
       MARIADB_PASSWORD: examplepass
+      WORDPRESS_TABLE_PREFIX: wp_
+      WORDPRESS_CONFIG_EXTRA: |
+          define( 'WP_ENVIRONMENT_TYPE', 'local' );
+          define( 'WP_MEMORY_LIMIT', '512M' );
     volumes:
-      - db_data:/var/lib/mysql
+      - ./db/db_data:/var/lib/mysql
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "--silent"]
