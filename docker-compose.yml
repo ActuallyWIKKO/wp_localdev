@@ -33,7 +33,7 @@ services:
           define( 'WP_ENVIRONMENT_TYPE', 'local' );
           define( 'WP_MEMORY_LIMIT', '512M' );
     volumes:
-      - ./db/db_data:/var/lib/mysql
+      - db_data:/var/lib/mysql
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "--silent"]
