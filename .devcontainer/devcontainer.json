@@ -1,0 +1,22 @@
+{
+    "name": "wpdev",
+    "dockerComposeFile": ["../docker-compose.yml"],
+    "service": "wordpress",
+    "workspaceFolder": "/",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "bmewburn.vscode-intelephense-client"
+        ],
+        "settings": {
+          "intelephense.environment.includePaths": [
+            "/var/www/html",
+            "/workspace/wp-content/themes/"
+          ],
+          "intelephense.files.exclude": [
+            "/var/www/html/wp-content/**"
+          ]
+        }
+      }
+    }
+  }
