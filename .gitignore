@@ -190,3 +190,7 @@ wp-content/themes/twentytwentytwo/templates/page.html
 wp-content/themes/twentytwentytwo/templates/search.html
 wp-content/themes/twentytwentytwo/templates/single-no-separators.html
 wp-content/themes/twentytwentytwo/templates/single.html
+.ssh/ssh_key
+.ssh/ssh_key.pub
+cmds.txt
+custom-php.ini

@@ -123,6 +123,25 @@ if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
   eval($configExtra);
 }
 
+define('WP_ENVIRONMENT_TYPE', 'development');
+define('WP_MEMORY_LIMIT', '1024M');
+define('WP_CACHE', true);
+define('WP_SITE_TITLE', 'WP Localdev');
+define('WP_SITE_DESCRIPTION', '');
+define('WP_ADMIN_EMAIL', 'admin@example.com');
+define('WP_HOME', 'http://localhost:3002');
+define('WP_SITEURL', 'http://localhost:3002');
+define('WP_TIMEZONE', 'UTC+2');
+define('WP_TIME_FORMAT', 'H:i');
+define('WP_DATE_FORMAT', 'j F Y');
+define('WP_WEEK_STARTS_ON', 'Monday');
+define('WP_DEFAULT_USER_ROLE', 'Editor');
+define('WP_DEFAULT_THEME', 'twentytwentyfour');
+define('WP_DEFAULT_COMMENT_STATUS', 'Closed');
+define('WP_PERMALINK_STRUCTURE', '/%postname%/');
+define('WP_POST_REVISIONS', 3);
+define('WP_MULTISITE', true);
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
