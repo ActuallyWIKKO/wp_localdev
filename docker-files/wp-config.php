@@ -123,6 +123,16 @@ if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
   eval($configExtra);
 }
 
+define('WP_HOME', getenv_docker('WORDPRESS_HOME', 'http://localhost:3002'));
+define('WP_SITEURL', getenv_docker('WORDPRESS_SITEURL', 'http://localhost:3002'));
+define('WP_TIMEZONE', getenv_docker('WORDPRESS_TIMEZONE', 'UTC+2'));
+define('WP_LANG', getenv_docker('WORDPRESS_LANG', 'en_US'));
+define('WP_DEBUG_LOG', getenv_docker('WORDPRESS_DEBUG_LOG', true));
+define('WP_DEBUG_DISPLAY', getenv_docker('WORDPRESS_DEBUG_DISPLAY', true));
+define('WP_DATE_FORMAT', getenv_docker('WORDPRESS_DATE_FORMAT', 'd.m.Y'));
+define('WP_DEFAULT_EMAIL', getenv_docker('WORDPRESS_DEFAULT_EMAIL', 'admin@example.com'));
+define('WP_MULTISITE', getenv_docker('WORDPRESS_MULTISITE', true));
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
