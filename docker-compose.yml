@@ -5,7 +5,6 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: wordpress_dev
-    hostname: localhost
     ports:
       - "3002:80"
     environment:
@@ -13,32 +12,26 @@ services:
       WORDPRESS_DB_USER: exampleuser
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
-      WORDPRESS_EXTRA_CONFIG: |
-        define('WP_DEBUG', true);
-        define('WP_DEBUG_LOG', true);
-        define('WP_DEBUG_DISPLAY', true);
-        define('WP_DATE_FORMAT', 'd.m.Y');
-        define('WP_DEFAULT_EMAIL', 'admin@example.com');
-        define('WP_MULTISITE', true);
-        define('WP_LANG', 'en_US');
-        define('WP_TIMEZONE', 'UTC+4');
     volumes:
-      - ./_dist/:/var/www/html/_dist/
       - ./docker-files/wp-config.php:/var/www/html/wp-config.php
       - ./wp-content/plugins/:/var/www/html/wp-content/plugins/
       - ./wp-content/themes/:/var/www/html/wp-content/themes/
-    depends_on:
+   depends_on:
       - db
-    restart: unless-stopped
+   restart: unless-stopped
 
   db:
-    image: mariadb:lts
+    image: mariadb:latest
     container_name: wordpress_dev_db
     environment:
       MARIADB_ROOT_PASSWORD: somerootpassword
       MARIADB_DATABASE: exampledb
       MARIADB_USER: exampleuser
       MARIADB_PASSWORD: examplepass
+      WORDPRESS_TABLE_PREFIX: wp_
+      WORDPRESS_CONFIG_EXTRA: |
+          define( 'WP_ENVIRONMENT_TYPE', 'local' );
+          define( 'WP_MEMORY_LIMIT', '512M' );
     volumes:
       - db_data:/var/lib/mysql
     restart: unless-stopped
