@@ -22,7 +22,7 @@ You'll need this:
 With these basic setup steps done, you can now go to your localhost on port 3002, complete the 2-step Wordpress install
 and start developing your theme/plugin. 
 
-I use mine for developing and testing for our customers and to preparemy own headless system with a Vue-based frontend.
+I use mine for developing and testing for our customers and to prepare my own headless system with a Vue-based frontend.
 
 What mounts are available outside the container:
 - ./_dist/:/var/www/html/_dist/
