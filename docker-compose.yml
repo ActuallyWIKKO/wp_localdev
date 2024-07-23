@@ -16,9 +16,9 @@ services:
       - ./docker-files/wp-config.php:/var/www/html/wp-config.php
       - ./wp-content/plugins/:/var/www/html/wp-content/plugins/
       - ./wp-content/themes/:/var/www/html/wp-content/themes/
-   depends_on:
+  depends_on:
       - db
-   restart: unless-stopped
+  restart: unless-stopped
 
   db:
     image: mariadb:latest
