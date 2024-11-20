@@ -16,13 +16,13 @@ services:
       - ./docker-files/wp-config.php:/var/www/html/wp-config.php
       - ./wp-content/plugins/:/var/www/html/wp-content/plugins/
       - ./wp-content/themes/:/var/www/html/wp-content/themes/
-  depends_on:
-      - db
-  restart: unless-stopped
+    depends_on:
+        - db
+    restart: unless-stopped
 
   db:
     image: mariadb:latest
-    container_name: wordpress_dev_db
+    container_name: wordpress_dev_vdeh_db
     environment:
       MARIADB_ROOT_PASSWORD: somerootpassword
       MARIADB_DATABASE: exampledb
