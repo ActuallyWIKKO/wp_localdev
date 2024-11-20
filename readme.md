@@ -13,8 +13,12 @@ You'll need this:
 - docker-compose run -d
 3. Find the wordpress container ID & enter the container
 - docker ps
-- docker exec -it {CONTAINER ID} /bin/bash
+3.1 Create a Database
+  - docker exec -it {CONTAINER-ID} mysql -u root
+  - CREATE DATABASE {YOURDBNAME};
+  - exit
 4. Use the WP CLI to delete default plugins and themes then download your theme from Github
+ - docker exec -it {CONTAINER ID} /bin/bash
 - wp plugin list --status=inactive --field=name --allow-root --path=/var/www/html | xargs -n1 wp plugin delete --allow-root
 - wp theme list --status=inactive --field=name --allow-root --path=/var/www/html | xargs -n1 wp theme delete --allow-root
 - wp theme install {URL TO THEME ZIP FILE} --activate --allow-root --path=/var/www/html
@@ -31,3 +35,9 @@ What mounts are available outside the container:
 - ./wp-content/themes/:/var/www/html/wp-content/themes/
 
 Use _dist for headless setups. Adjust mounts as needed.
+
+Optionally use this for the initial setup
+  command: --skip-grant-tables
+in the database section of the docker-compose to skip authentication checks.
+
+These commands can change depending on the image used. For example on arm7 architecture the image I tried for mariadb used sh instead of bash.
